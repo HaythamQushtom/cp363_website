@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CP363 - Database I | Online Asynchronous | Wilfrid Laurier University</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>CP363 - Database I (Online Asynchronous)</h1>
+            <p class="subtitle">Wilfrid Laurier University | Winter 2025</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="lesson1.html">Lesson 1</a></li>
+                <li><a href="lesson2.html">Lesson 2</a></li>
+                <li><a href="lesson3.html">Lesson 3</a></li>
+                <li><a href="lesson4.html">Lesson 4</a></li>
+                <li><a href="lesson5.html">Lesson 5</a></li>
+                <li><a href="lesson6.html">Lesson 6</a></li>
+                <li><a href="lesson7.html">Lesson 7</a></li>
+                <li><a href="lesson8.html">Lesson 8</a></li>
+                <li><a href="lesson9.html">Lesson 9</a></li>
+                <li><a href="lesson10.html">Lesson 10</a></li>
+                <li><a href="lesson11.html">Lesson 11</a></li>
+                <li><a href="lesson12.html">Lesson 12</a></li>
+                <li><a href="assignments.html">Assignments</a></li>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section class="course-intro">
+                <h2>Course Overview</h2>
+                <p>Welcome to CP363 - Database I. This course provides a comprehensive introduction to database systems,
+                    focusing on relational database concepts, design, and implementation. Throughout this course, you
+                    will learn about database design principles, Entity-Relationship modeling, relational database
+                    theory, SQL programming, and database management systems.</p>
+
+                <p>The course is structured thematically, with topics building upon each other in a logical progression.
+                    Each module combines theoretical knowledge with hands-on practical experiences, emphasizing
+                    real-world applications and industry-relevant skills. This approach allows you to develop both
+                    conceptual understanding and practical abilities that are directly applicable to professional
+                    database management roles.</p>
+
+                <div class="textbook-info">
+                    <h3>Reference Textbook</h3>
+                    <p><strong>Fundamentals of Database Systems, 7/E</strong> by Ramez Elmasri & Shamkant B. Navathe</p>
+                    <p>ISBN-10: 0133970779 | ISBN-13: 9780133970777 | Pearson Education</p>
+                </div>
+
+                <div class="additional-textbooks">
+                    <h3>Additional Reference Books</h3>
+                    <ul>
+                        <li>Database Systems: Design, Implementation, and Management, 8th Edition by Peter Rob and
+                            Carlos Coronel</li>
+                        <li>An Introduction to Database Systems by C.J. Date, 8th edition</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="learning-outcomes">
+                <h2>Course Learning Outcomes</h2>
+                <p>By the end of this course, students should be able to:</p>
+                <ul>
+                    <li><strong>Explain</strong> the fundamental concepts of relational database systems and their
+                        importance in modern information systems</li>
+                    <li><strong>Design</strong> effective database schemas using Entity-Relationship modeling techniques
+                    </li>
+                    <li><strong>Implement</strong> database designs using SQL, including creating tables with
+                        appropriate constraints</li>
+                    <li><strong>Develop</strong> complex SQL queries to retrieve and manipulate data from multiple
+                        tables</li>
+                    <li><strong>Apply</strong> normalization techniques to improve database designs and eliminate
+                        redundancies</li>
+                    <li><strong>Analyze</strong> database performance issues and implement appropriate indexing
+                        strategies</li>
+                    <li><strong>Evaluate</strong> different database technologies and their suitability for specific
+                        application scenarios</li>
+                    <li><strong>Create</strong> database views and stored procedures to enhance database functionality
+                    </li>
+                    <li><strong>Demonstrate</strong> effective teamwork skills through collaborative database projects
+                    </li>
+                </ul>
+                <p>These outcomes are progressively developed throughout the course, with early modules building
+                    foundational knowledge that is applied and expanded in later modules.</p>
+            </section>
+
+            <section class="course-materials">
+                <h2>Course Materials</h2>
+                <p>This course utilizes a digital-first approach with materials specifically designed for online
+                    learning:</p>
+                <ul>
+                    <li><strong>Lecture Materials:</strong> Comprehensive slide decks </li>
+                    <li><strong>Multimedia Content:</strong> Video demonstrations of database concepts and MySQL
+                        operations</li>
+                    <li><strong>Supplementary Resources:</strong> Curated articles, blog posts, and industry case
+                        studies</li>
+                    <li><strong>Interactive Tutorials:</strong> Guided exercises with immediate feedback for SQL
+                        practice</li>
+                    <li><strong>Sample Databases:</strong> Pre-built database files for hands-on exploration and
+                        practice</li>
+                </ul>
+                <p>All materials are accessible through MyLearningSpace and have been designed to be self-contained,
+                    allowing you to complete coursework with minimal reliance on external resources beyond the
+                    recommended textbooks.</p>
+            </section>
+
+            <section class="online-delivery-info">
+                <h2>Online Asynchronous Delivery Information</h2>
+
+                <div class="course-details">
+                    <h3>Course Details</h3>
+                    <ul>
+                        <li><strong>Instructor:</strong> Dr. Haytham Qushtom</li>
+                        <li><strong>Email:</strong> hqushtom@wlu.ca</li>
+                        <li><strong>Office Hours:</strong> By appointment via MS Teams. Please email to schedule a
+                            meeting.</li>
+                        <li><strong>Lecture Delivery:</strong> Online asynchronous (no fixed meeting times)</li>
+                        <li><strong>Course Location:</strong> Online via MyLearningSpace (D2L)</li>
+                        <li><strong>Learning Management System:</strong> <a href="http://mylearningspace.wlu.ca"
+                                target="_blank">http://mylearningspace.wlu.ca</a></li>
+                        <li><strong>Pre-requisites:</strong> CP164 (or CP114)</li>
+                    </ul>
+                </div>
+
+                <div class="online-learning">
+                    <h3>Online Learning Expectations</h3>
+                    <p>This course is delivered in an asynchronous online format, meaning there are no scheduled class
+                        times. This approach offers several benefits:</p>
+                    <ul>
+                        <li><strong>Self-Paced Learning:</strong> You can spend more time on challenging concepts and
+                            move quickly through familiar material</li>
+                        <li><strong>Flexibility:</strong> Access and review course materials (lecture recordings,
+                            slides, readings) weekly according to your own schedule</li>
+                        <li><strong>Work-Life Balance:</strong> Better accommodation for students with jobs, family
+                            responsibilities, or other commitments</li>
+                    </ul>
+                    <p>Students are expected to:</p>
+                    <ul>
+                        <li>Complete weekly learning activities according to the course schedule</li>
+                        <li>Submit assignments and take quizzes by the specified due dates</li>
+                        <li>Actively participate in online discussions through MyLearningSpace</li>
+                        <li>Check course announcements regularly</li>
+                        <li>Contact the instructor promptly with any questions or concerns</li>
+                        <li>Take responsibility for managing time effectively and maintaining consistent progress</li>
+                    </ul>
+                    <p>The course is designed to foster active learning through interactive activities, discussions, and
+                        practical exercises rather than passive consumption of content.</p>
+                </div>
+
+                <div class="technical-requirements">
+                    <h3>Technical Requirements</h3>
+                    <p>To successfully participate in this online course, you will need:</p>
+                    <ul>
+                        <li>Reliable internet connection</li>
+                        <li>Computer with webcam and microphone (for virtual office hours and potential online exams)
+                        </li>
+                        <li>MySQL Workbench (installation instructions will be provided)</li>
+                        <li>Access to MyLearningSpace (D2L)</li>
+                        <li>Microsoft Teams for virtual meetings</li>
+                    </ul>
+                    <p><strong>Learning Management System Navigation:</strong></p>
+                    <ul>
+                        <li>Course content is organized into weekly modules in MyLearningSpace</li>
+                        <li>Discussion boards are organized by topic for easy navigation</li>
+                        <li>Assignment dropboxes provide automatic submission confirmation</li>
+                        <li>Progress tracking tools allow you to monitor your completion of course activities</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-components">
+                    <h3>Interactive Learning Components</h3>
+                    <ul>
+                        <li><strong>Discussion Forums:</strong> Topic-specific forums for questions, discussions, and
+                            peer interaction</li>
+                        <li><strong>Student Presentations:</strong> You will create and submit a short video
+                            presentation on an assigned database topic to share with the class</li>
+                        <li><strong>Peer Learning:</strong> Opportunities to review and provide feedback on other
+                            students' work</li>
+                        <li><strong>Case Studies:</strong> Real-world database scenarios for analysis and discussion
+                        </li>
+                        <li><strong>Group Projects:</strong> Collaborative database design and implementation with clear
+                            contribution expectations for each team member</li>
+                    </ul>
+                    <p>These interactive components help build a sense of community and provide opportunities for
+                        knowledge sharing despite the physical distance in an online course.</p>
+                </div>
+
+                <div class="communication">
+                    <h3>Communication and Support</h3>
+                    <ul>
+                        <li><strong>MyLearningSpace:</strong> You should frequently visit the CP363 course page on MyLS.
+                            It contains all information pertinent to the course.</li>
+                        <li><strong>Discussion Forums:</strong> You are encouraged to post your questions on the
+                            discussion forum on MyLS. For each chapter and assignment, you will see a thread where you
+                            can post questions. Review earlier posts to check if your question has already been
+                            answered.</li>
+                        <li><strong>Email:</strong> If your issue/question is not appropriately addressed, you should
+                            contact the instructor through email. Please do not email via MyLS and do not make any
+                            submissions through email as it gets automatically flagged as spam.</li>
+                        <li><strong>Virtual Office Hours:</strong> Available by appointment via MS Teams.</li>
+                        <li><strong>Response Times:</strong> The instructor will typically respond to emails within
+                            24-48 hours on business days. More complex questions may require scheduling a virtual
+                            meeting.</li>
+                    </ul>
+                </div>
+
+                <div class="assessment">
+                    <h3>Assessment Information</h3>
+                    <p>You are required to pass the final exam in order to pass the course. The Department of Physics &
+                        Computer Science requires that students must write the final exam in person on the Waterloo
+                        campus (unless otherwise specified due to exceptional circumstances).</p>
+                    <p>If you pass the final exam, the following evaluation is applied:</p>
+                    <table class="assessment-table">
+                        <tr>
+                            <th>Assessment</th>
+                            <th>Weighting</th>
+                        </tr>
+                        <tr>
+                            <td>Weekly Quizzes</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td>Assignments/project (6)</td>
+                            <td>25%</td>
+                        </tr>
+                        <tr>
+                            <td>Video Presentation</td>
+                            <td>5%</td>
+                        </tr>
+                        <tr>
+                            <td>Midterm Test</td>
+                            <td>25%</td>
+                        </tr>
+                        <tr>
+                            <td>Final Exam Test</td>
+                            <td>35%</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>100%</td>
+                        </tr>
+                    </table>
+                    <p>No tests or assignments are dropped from the course evaluation.</p>
+                    <div class="weekly-quizzes">
+                        <h4>Weekly Quizzes</h4>
+                        <p>Each week includes a short online quiz (5-8 multiple-choice questions) testing your
+                            understanding of fundamental concepts from that week's material. Quizzes have a 10-minute
+                            time limit and must be completed within the week the material is posted.</p>
+                        <p><strong>Quiz Flexibility Policy:</strong> You may miss 2 quizzes without penalty, or if you
+                            complete all quizzes, your lowest 2 quiz scores will be dropped. This policy accommodates
+                            unexpected circumstances without requiring formal documentation.</p>
+                    </div>
+
+                    <div class="assignments-projects">
+                        <h4>Assignments and Projects</h4>
+                        <p>Six culminating assignments which are parts of the project are worth 25% of the final grade.
+                            Students will submit each assignment to Dropbox by the assigned deadline. Project is a
+                            team-based work; students should work within a team of a maximum of 2.</p>
+                        <p>For team projects, each submission should include a brief statement outlining the
+                            contribution of each team member. Grading will consider both the overall quality of the work
+                            and individual contributions.</p>
+                    </div>
+
+                    <div class="video-presentation">
+                        <h4>Video Presentation</h4>
+                        <p>Each student will prepare a 5-7 minute video presentation on an assigned database topic.
+                            Presentations will be shared with the class through a dedicated discussion board, and
+                            students are expected to view and comment on at least 2 other presentations. The
+                            presentation should include a clear explanation of the topic, relevant examples, and
+                            visual aids (slides, diagrams, etc.).</p>
+                        <p>Grading will be based on clarity, content, engagement, and adherence to the time limit. Peer
+                            feedback will also be considered in the final grade.</p>
+                    </div>
+                    <div class="midterm-exam">
+                        <h4>Midterm Exam</h4>
+                        <p>The midterm exam will cover material from Weeks 1-6 and will be held online. The exam will
+                            consist of multiple-choice questions, short answer questions, and practical SQL exercises.
+                            The exam will be open-book, but you are expected to work independently without external
+                            assistance.</p>
+                        <p>Students must complete the midterm exam within the scheduled time frame. No make-up exams
+                            will be offered unless there is a valid, documented reason accepted by the instructor. The
+                            midterm exam will be worth 25% of the final grade.</p>
+                    </div> 
+                    <div class="final-exam">
+                        <h4>Final Exam</h4>
+                        <p>The final exam will cover all course material and will be held online. The exam format will
+                            be similar to the midterm exam, with a mix of multiple-choice questions, short answer
+                            questions, and practical SQL exercises. The final exam will be worth 35% of the final
+                            grade.</p>
+                        <p>Students must complete the final exam within the scheduled time frame. No make-up exams will
+                            be offered unless there is a valid, documented reason accepted by the instructor.</p>
+                        <p>Students are required to pass the final exam in order to pass the course. The final exam
+                            will be scheduled by the registrar's office, and students should check the course page on
+                            MyLearningSpace for updates.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="course-communication">
+                <h2>Course Communication</h2>
+                <p>All course communication will be conducted through MyLearningSpace. Students are expected to
+                    check the course page regularly for announcements, updates, and important information. Email
+                    communication should be used for personal inquiries or issues that cannot be addressed through
+                    the discussion forums.</p>
+                <p>Students are encouraged to participate in online discussions and ask questions in the forums.
+                    This fosters a collaborative learning environment and allows for peer-to-peer support. The
+                    instructor will monitor the forums and respond to questions in a timely manner.</p>
+                <p>For technical issues related to MyLearningSpace or other course materials, students should
+                    contact the IT Help Desk at Wilfrid Laurier University. The Help Desk can assist with login
+                    issues, software installation, and other technical problems.</p>
+                <p>For questions related to course content, assignments, or exams, students should first check the
+                    discussion forums to see if their question has already been answered. If not, they can post
+                    their question in the appropriate forum or email the instructor directly. The instructor will
+                    respond to emails within 24-48 hours on business days.</p>
+                <p>Students are also encouraged to form study groups and collaborate with their peers on course
+                    materials. This can enhance understanding of the material and provide additional support for
+                    assignments and projects. The instructor can assist in facilitating group formation if needed.</p>
+            </section>
+
+                    <section class="course-schedule">
+                        <h2>Course Schedule</h2>
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Week</th>
+                                    <th>Lecture Topic</th>
+                                    <th>Quiz and Assignments</th>
+                                    <th>Textbook Chapters</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="lesson1.html">Introduction to Databases and DBMS, MySQL Workbench
+                                            overview</a></td>
+                                    <td>Assignment 1 Assigned (MySQL Basics)</td>
+                                    <td>Ch. 1–2</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><a href="lesson2.html">Entity-Relationship (ER) Modeling (entities,
+                                            relationships, ER diagrams)</a></td>
+                                    <td>Assignment 1 Due (MySQL Basics)</td>
+                                    <td>Ch. 3</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><a href="lesson3.html">ER-to-Relational Mapping; Relational Model (schemas,
+                                            keys, integrity constraints)</a></td>
+                                    <td>Assignment 2 Assigned (ER Modeling)</td>
+                                    <td>Ch. 5, 9</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><a href="lesson4.html">SQL Fundamentals (DDL, DML, basic SELECT queries)</a>
+                                    </td>
+                                    <td>Assignment 2 Due; <br>Assignment 3 Assigned (SQL Basics)</td>
+                                    <td>Ch. 6</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><a href="lesson5.html">Advanced SQL Queries (Part 1: joins, aggregation,
+                                            grouping)</a></td>
+                                    <td></td>
+                                    <td>Ch. 7</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td><a href="lesson6.html">Advanced SQL Queries (Part 2: subqueries,
+                                            optimization)</a></td>
+                                    <td>Assignment 3 Due</td>
+                                    <td>Ch. 7</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td><a href="lesson7.html">Midterm Exam (covers Weeks 1–6)</a></td>
+                                    <td></td>
+                                    <td>Review Ch. 1–8</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td><a href="lesson8.html">Relational Algebra (selection, projection, joins, set
+                                            operations)</a></td>
+                                    <td>Assignment 4 Assigned (Advanced SQL)</td>
+                                    <td>Ch. 8</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td><a href="lesson9.html">Normalization Theory (1NF, 2NF, 3NF, BCNF, anomalies,
+                                            functional dependencies)</a></td>
+                                    <td>Assignment 4 Due</td>
+                                    <td>Ch. 14</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td><a href="lesson10.html">SQL Programming (Stored procedures, user-defined
+                                            functions, triggers)</a></td>
+                                    <td>Assignment 5 Assigned (Normalization)</td>
+                                    <td>MySQL documentation & examples</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td><a href="lesson11.html">Physical Storage and Indexing (disk storage, indexing
+                                            methods)</a></td>
+                                    <td>Assignment 5 Due; <br> Assignment 6 Assigned (Final Project)</td>
+                                    <td>Ch. 16, 17</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td><a href="lesson12.html">Query Processing, Optimization, Transactions (ACID,
+                                            concurrency)</a></td>
+                                    <td>Assignment 6 Due (Final Project)</td>
+                                    <td>Ch. 18, 19, 20</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section class="course-policies">
+                        <h2>Course Policies</h2>
+
+                        <div class="missed-assignments">
+                            <h3>Missed Assignments</h3>
+                            <p>An assignment not submitted by the due date will receive a zero unless a valid,
+                                documented reason
+                                is provided. If a documented reason is supplied and accepted by the instructor, the
+                                assignment
+                                must be submitted within one week of the original due date. A copy or the original of
+                                the
+                                documented reason must be provided to and approved by the instructor.</p>
+                        </div>
+
+                        <div class="missed-midterm">
+                            <h3>Missed Midterm</h3>
+                            <p>A missed midterm exam will receive a zero unless there is a valid, documented reason
+                                accepted by
+                                the instructor. The student must complete the makeup exam on a date scheduled by the
+                                instructor.
+                                Missing the makeup exam will also result in a zero.</p>
+                            <p>An extenuating circumstance is defined as a rare and severe event over which a student
+                                has no
+                                control or ability to anticipate (e.g., a severe accident or an emergent medical
+                                condition).</p>
+                        </div>
+
+                        <div class="final-exam">
+                            <h3>Final Exam</h3>
+                            <p>To be announced by the registrar's office. If you are considering registering for a
+                                special
+                                examination or event, you should select a time outside the examination period. Consult
+                                Academic
+                                Regulations in the Academic Calendar for special circumstances for examination
+                                deferment.</p>
+                             </p>
+                        </div>
+                    </section>
+                </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; Haytham Qushtom - Wilfrid Laurier University</p>
+        </div>
+    </footer>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
+<!-- </html> -->
