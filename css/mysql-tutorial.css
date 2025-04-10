@@ -27,6 +27,15 @@
     text-align: center;
 }
 
+.image-container2 {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.image-container2 img{
+    margin-right: auto;
+    margin-left: auto;
+}
 .image-caption {
     font-style: italic;
     color: #555;
