@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2: Entity-Relationship (ER) Modeling | CP363 - Database I</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>CP363 - Database I (Online)</h1>
+            <p class="subtitle">Wilfrid Laurier University</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="lesson1.html">Lesson 1</a></li>
+                <li><a href="lesson2.html" class="active">Lesson 2</a></li>
+                <li><a href="lesson3.html">Lesson 3</a></li>
+                <li><a href="lesson4.html">Lesson 4</a></li>
+                <li><a href="lesson5.html">Lesson 5</a></li>
+                <li><a href="lesson6.html">Lesson 6</a></li>
+                <li><a href="lesson7.html">Lesson 7</a></li>
+                <li><a href="lesson8.html">Lesson 8</a></li>
+                <li><a href="lesson9.html">Lesson 9</a></li>
+                <li><a href="lesson10.html">Lesson 10</a></li>
+                <li><a href="lesson11.html">Lesson 11</a></li>
+                <li><a href="lesson12.html">Lesson 12</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="lesson-header">
+                <h2>Lesson 2: Entity-Relationship (ER) Modeling</h2>
+            </div>
+
+            <div class="lesson-content">
+                <div class="lesson-tasks">
+                    <h3>Lesson Tasks</h3>
+                    <ol>
+                        <li>Read the online lesson notes on Entity-Relationship modeling.</li>
+                        <li>Complete the practice exercises on creating ER diagrams.</li>
+                        <li>Begin working on Assignment 2 (ER Modeling) which will be assigned this week.</li>
+                        <li>Apply ER modeling concepts to design a database for a real-world scenario.</li>
+                    </ol>
+                </div>
+
+                <div class="learning-outcomes">
+                    <h3>Learning Outcomes</h3>
+                    <p>By the end of this lesson, you should be able to:</p>
+                    <ol>
+                        <li>Understand the database design process and the role of conceptual modeling</li>
+                        <li>Identify entities, attributes, and relationships in a problem domain</li>
+                        <li>Distinguish between different types of attributes (simple, composite, multi-valued, derived)
+                        </li>
+                        <li>Recognize and model different types of relationships (1:1, 1:N, M:N)</li>
+                        <li>Understand and apply cardinality and participation constraints</li>
+                        <li>Create Entity-Relationship diagrams using proper notation</li>
+                        <li>Model weak entities and identifying relationships</li>
+                        <li>Apply ER modeling to solve real-world database design problems</li>
+                    </ol>
+                </div>
+
+                <div id="table-of-contents">
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#database-design-process">Part 1: Database Design Process</a>
+                            <ul>
+                                <li><a href="#requirements-collection">Requirements Collection and Analysis</a></li>
+                                <li><a href="#conceptual-design">Conceptual Database Design</a></li>
+                                <li><a href="#logical-design">Logical Database Design</a></li>
+                                <li><a href="#physical-design">Physical Database Design</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#er-model-concepts">Part 2: ER Model Concepts</a>
+                            <ul>
+                                <li><a href="#entities-entity-sets">Entities and Entity Sets</a></li>
+                                <li><a href="#attributes">Attributes and Their Types</a></li>
+                                <li><a href="#keys">Keys</a></li>
+                                <li><a href="#relationships">Relationships and Relationship Sets</a></li>
+                                <li><a href="#cardinality-participation">Cardinality and Participation Constraints</a>
+                                </li>
+                                <li><a href="#weak-entities">Weak Entities</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#er-diagram-notation">Part 3: ER Diagram Notation</a>
+                            <ul>
+                                <li><a href="#chen-notation">Chen Notation</a></li>
+                                <li><a href="#crow-foot-notation">Crow's Foot Notation</a></li>
+                                <li><a href="#uml-notation">UML Class Diagram Notation</a></li>
+                                <li><a href="#notation-comparison">Comparison of Notations</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#practical-er-modeling">Part 4: Practical ER Modeling</a>
+                            <ul>
+                                <li><a href="#identifying-entities">Identifying Entities, Attributes, and
+                                        Relationships</a></li>
+                                <li><a href="#common-patterns">Common Design Patterns</a></li>
+                                <li><a href="#common-mistakes">Common Mistakes in ER Modeling</a></li>
+                                <li><a href="#case-study">Case Study: University Database</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#what-we-learned">What Have We Learned in This Lesson?</a></li>
+                        <li><a href="#appendix">Appendix</a></li>
+                        <li><a href="#practice-exercises">Practice Exercises</a></li>
+
+                        <li><a href="#additional-resources">Additional Resources</a></li>
+                    </ul>
+                </div>
+
+                <div id="introduction">
+                    <h3>Introduction</h3>
+                    <p>Welcome to Lesson 2 of CP363: Database I. In this lesson, we will explore Entity-Relationship
+                        (ER) modeling, a fundamental technique for conceptual database design. ER modeling provides a
+                        way to visualize the structure of a database before implementing it, helping to ensure that the
+                        database accurately represents the real-world system it's modeling.</p>
+
+                    <p>Database design is a critical phase in database development. A well-designed database is easier
+                        to implement, maintain, and modify as requirements change. It also provides better performance
+                        and data integrity. Entity-Relationship modeling is the first step in this design process,
+                        allowing us to create a high-level conceptual model of the data and relationships that will be
+                        stored in the database.</p>
+
+                    <p>The ER model was first proposed by Peter Chen in 1976 and has since become one of the most widely
+                        used approaches for conceptual database design. It provides a set of concepts and notations that
+                        allow database designers to capture the semantics of real-world data in a graphical
+                        representation called an Entity-Relationship Diagram (ERD).</p>
+
+                    <p>In this lesson, we will learn about the database design process, the core concepts of the ER
+                        model (entities, attributes, relationships), different notations for ER diagrams, and practical
+                        techniques for creating effective ER models. By the end of this lesson, you will be able to
+                        create ER diagrams for various scenarios and understand how these diagrams serve as a blueprint
+                        for database implementation.</p>
+
+                    <p>Let's begin our exploration of Entity-Relationship modeling!</p>
+                </div>
+
+                <div id="database-design-process">
+                    <h3>Part 1: Database Design Process</h3>
+
+                    <p>Before diving into the specifics of ER modeling, it's important to understand where it fits
+                        within the overall database design process. Database design typically follows a structured
+                        approach consisting of several phases:</p>
+
+                    <div id="requirements-collection">
+                        <h4>Requirements Collection and Analysis</h4>
+
+                        <p>The database design process begins with understanding what the database needs to accomplish.
+                            This involves:</p>
+
+                        <ul>
+                            <li><strong>Interviewing stakeholders</strong>: Meeting with users, managers, and other
+                                stakeholders to understand their needs and expectations.</li>
+                            <li><strong>Analyzing existing systems</strong>: Examining current data storage methods,
+                                forms, reports, and processes.</li>
+                            <li><strong>Documenting requirements</strong>: Creating detailed documentation of data
+                                requirements, including what data needs to be stored, how it will be used, and any
+                                constraints or business rules.</li>
+                            <li><strong>Defining scope</strong>: Determining the boundaries of the database system—what
+                                it will and won't include.</li>
+                        </ul>
+
+                        <p>The output of this phase is a set of requirements specifications that serve as the foundation
+                            for the subsequent design phases.</p>
+                    </div>
+
+                    <div id="conceptual-design">
+                        <h4>Conceptual Database Design</h4>
+
+                        <p>This is where Entity-Relationship modeling comes into play. The conceptual design phase
+                            involves:</p>
+
+                        <ul>
+                            <li><strong>Identifying entities</strong>: Determining the main objects or concepts about
+                                which data will be stored.</li>
+                            <li><strong>Defining attributes</strong>: Specifying the properties or characteristics of
+                                each entity.</li>
+                            <li><strong>Establishing relationships</strong>: Determining how entities are related to
+                                each other.</li>
+                            <li><strong>Creating ER diagrams</strong>: Representing the conceptual model graphically
+                                using ER notation.</li>
+                        </ul>
+
+                        <p>The conceptual design is independent of any specific database management system (DBMS) or
+                            implementation details. It focuses on capturing the semantics of the real-world system being
+                            modeled.</p>
+
+                        <p>The primary output of this phase is an Entity-Relationship Diagram (ERD) that represents the
+                            conceptual schema of the database.</p>
+                    </div>
+
+                    <div id="logical-design">
+                        <h4>Logical Database Design</h4>
+
+                        <p>Once the conceptual design is complete, it is translated into a logical model that can be
+                            implemented in a specific type of database system. For relational databases, this involves:
+                        </p>
+
+                        <ul>
+                            <li><strong>Mapping entities to tables</strong>: Converting each entity into a table
+                                (relation).</li>
+                            <li><strong>Mapping attributes to columns</strong>: Converting each attribute into a column
+                                in the appropriate table.</li>
+                            <li><strong>Mapping relationships</strong>: Implementing relationships through foreign keys
+                                or relationship tables.</li>
+                            <li><strong>Normalization</strong>: Applying normalization techniques to eliminate
+                                redundancy and ensure data integrity.</li>
+                            <li><strong>Defining constraints</strong>: Specifying primary keys, foreign keys, unique
+                                constraints, and other integrity constraints.</li>
+                        </ul>
+
+                        <p>The logical design is specific to a type of database model (e.g., relational, document,
+                            graph) but is still independent of any specific DBMS product.</p>
+
+                        <p>The output of this phase is a logical schema, typically represented as a set of table
+                            definitions with columns, data types, and constraints.</p>
+                    </div>
+
+                    <div id="physical-design">
+                        <h4>Physical Database Design</h4>
+
+                        <p>The final phase of database design involves optimizing the logical design for a specific DBMS
+                            and hardware environment. This includes:</p>
+
+                        <ul>
+                            <li><strong>Selecting storage structures</strong>: Determining how data will be physically
+                                stored.</li>
+                            <li><strong>Creating indexes</strong>: Defining indexes to improve query performance.</li>
+                            <li><strong>Implementing security</strong>: Setting up user accounts, roles, and
+                                permissions.</li>
+                            <li><strong>Tuning for performance</strong>: Optimizing the database for specific workloads
+                                and hardware configurations.</li>
+                            <li><strong>Planning for growth</strong>: Considering future data volume and usage patterns.
+                            </li>
+                        </ul>
+
+                        <p>The physical design is specific to a particular DBMS product (e.g., MySQL, Oracle, SQL
+                            Server) and hardware environment.</p>
+
+                        <p>The output of this phase is a physical schema that can be implemented directly in the target
+                            DBMS, including SQL statements for creating tables, indexes, views, and other database
+                            objects.</p>
+                    </div>
+
+                    <p>In this lesson, we will focus primarily on the conceptual design phase, specifically on
+                        Entity-Relationship modeling. The ER model we create will serve as the foundation for the
+                        logical and physical design phases that follow.</p>
+                </div>
+
+                <div class="image-container2">
+                    <img src="images/Database_Design_Process.png" alt="Viewing Table Data" class="tutorial-image">
+                    <p class="image-caption">Viewing Database Design Process</p>
+                </div>
+
+                <div id="er-model-concepts">
+                    <h2>Part 2: ER Model Concepts</h2>
+
+                    <p>The Entity-Relationship model consists of several key concepts that allow us to represent the
+                        structure and semantics of data. Let's explore each of these concepts in detail:</p>
+
+                    <div id="entities-entity-sets">
+                        <h3>Entities and Entity Sets</h3>
+
+                        <p><strong>Entity</strong>: An entity is a real-world object, concept, or event about which we
+                            want to store data. Examples include a person, a place, a product, an order, or an event.
+                        </p>
+
+                        <p><strong>Entity Set</strong>: An entity set is a collection of entities of the same type. For
+                            example, all students in a university form the "Student" entity set, and all courses form
+                            the "Course" entity set.</p>
+
+                        <p>In ER diagrams, entity sets are typically represented as rectangles labeled with the name of
+                            the entity set.</p>
+
+                        <p><strong>Types of Entities</strong>:</p>
+                        <ul>
+                            <li><strong>Strong Entity</strong>: An entity that can exist independently of other
+                                entities. It has its own primary key that uniquely identifies each entity instance.
+                                Examples include Student, Employee, and Department.</li>
+                            <li><strong>Weak Entity</strong>: An entity that cannot exist independently and relies on
+                                another entity (its owner or identifying entity) for its identification. A weak entity
+                                does not have a complete primary key of its own. Examples include Dependent (of an
+                                Employee) or Room (in a Building).</li>
+                        </ul>
+                    </div>
+                    <div class="image-container2">
+                        <img src="images/entities.png" style="width: 26%;padding: 20px;" alt="Viewing Table Data"
+                            class="tutorial-image">
+                        <p class="image-caption">Viewing Types of Entities</p>
+                    </div>
+                    <div id="attributes">
+                        <h3>Attributes and Their Types</h3>
+
+                        <p><strong>Attribute</strong>: An attribute is a property or characteristic of an entity. For
+                            example, a Student entity might have attributes such as student_id, name, date_of_birth, and
+                            email.</p>
+
+                        <p>In ER diagrams, attributes are typically represented as ovals connected to their entity
+                            rectangle.</p>
+
+                        <p><strong>Types of Attributes</strong>:</p>
+
+                        <ul>
+                            <li><strong>Simple Attribute</strong>: An attribute that cannot be divided further. Examples
+                                include age, gender, or salary.</li>
+                            <li><strong>Composite Attribute</strong>: An attribute that can be divided into smaller
+                                subparts. For example, address can be divided into street, city, state, and zip code.
+                            </li>
+                            <li><strong>Single-valued Attribute</strong>: An attribute that holds only one value for
+                                each entity instance. Examples include social security number or date of birth.</li>
+                            <li><strong>Multi-valued Attribute</strong>: An attribute that can hold multiple values for
+                                each entity instance. Examples include phone numbers (a person may have multiple phone
+                                numbers) or skills (an employee may have multiple skills).</li>
+                            <li><strong>Derived Attribute</strong>: An attribute whose value can be calculated from
+                                other attributes. Examples include age (derived from date of birth and current date) or
+                                total_price (derived from quantity and unit_price).</li>
+                            <li><strong>Stored Attribute</strong>: An attribute whose value is explicitly stored in the
+                                database, as opposed to being derived.</li>
+                            <li><strong>Complex Attribute</strong>: An attribute that combines multiple types, such as a
+                                multi-valued composite attribute.</li>
+                        </ul>
+
+                        <p>In ER diagrams, different types of attributes are represented with different notations:</p>
+                        <ul>
+                            <li>Simple attributes: Regular ovals</li>
+                            <li>Composite attributes: Ovals connected to other ovals (subattributes)</li>
+                            <div class="image-container2">
+                                <img src="images/Composite_attributes.png" style="width: 30%;padding: 20px;"
+                                    alt="Viewing Table Data" class="tutorial-image">
+                                <p class="image-caption">Viewing Composite Attributes
+                                </p>
+                            </div>
+                            <li>Multi-valued attributes: Double ovals</li>
+                            <li>Derived attributes: Dashed ovals</li>
+                        </ul>
+                    </div>
+
+                    <div class="image-container2">
+                        <img src="images/er_diagram1.png" style="width: 50%;" alt="Viewing Table Data"
+                            class="tutorial-image">
+                        <p class="image-caption">Viewing Types of Attributes</p>
+                    </div>
+
+                    <div id="keys">
+                        <h3>Keys</h3>
+
+                        <p>Keys are special attributes or combinations of attributes that uniquely identify entity
+                            instances:</p>
+
+                        <ul>
+                            <li><strong>Candidate Key</strong>: An attribute (or combination of attributes) that can
+                                uniquely identify each entity instance in an entity set. An entity set may have multiple
+                                candidate keys.</li>
+                            <li><strong>Primary Key</strong>: The candidate key chosen to be the main identifier for an
+                                entity set. In ER diagrams, primary key attributes are often underlined.</li>
+                            <li><strong>Composite Key</strong>: A key that consists of multiple attributes.</li>
+                            <li><strong>Partial Key</strong>: An attribute (or combination of attributes) that can
+                                uniquely identify weak entity instances that are related to the same owner entity. A
+                                partial key combined with the primary key of the owner entity forms the primary key of
+                                the weak entity.</li>
+                        </ul>
+
+                        <p>For example, in a Student entity set, student_id might be the primary key, while email could
+                            be another candidate key (assuming each student has a unique email address).</p>
+                    </div>
+
+                    <div id="relationships">
+                        <h3>Relationships and Relationship Sets</h3>
+
+                        <p><strong>Relationship</strong>: A relationship is an association between two or more entities.
+                            For example, a Student "enrolls in" a Course, or an Employee "works in" a Department.</p>
+
+                        <p><strong>Relationship Set</strong>: A relationship set is a collection of relationships of the
+                            same type. For example, all enrollment relationships between students and courses form the
+                            "Enrolls_In" relationship set.</p>
+
+                        <p>In ER diagrams, relationship sets are typically represented as diamonds labeled with the name
+                            of the relationship.</p>
+
+                        <p><strong>Degree of a Relationship</strong>:</p>
+                        <ul>
+                            <li><strong>Unary Relationship (Recursive)</strong>: A relationship between entities of the
+                                same entity set. For example, an Employee "manages" another Employee.</li>
+                            <div class="image-container2">
+                                <img src="images/Recursive_relationship.png" style="width: 50%;padding: 20px;"
+                                    alt="Viewing Table Data" class="tutorial-image">
+                                <p class="image-caption">Viewing Recursive Relationship</p>
+                            </div>
+                            <li><strong>Binary Relationship</strong>: A relationship between entities of two different
+                                entity sets. For example, an Employee "works for" a Department.</li>
+                            <div class="image-container2">
+                                <img src="images/Binary_relationship.png" style="width: 50%;padding: 20px;"
+                                    alt="Viewing Table Data" class="tutorial-image">
+                                <p class="image-caption">Viewing Binary Relationship</p>
+                            </div>
+
+                            <li><strong>Ternary Relationship</strong>: A relationship between entities of three
+                                different entity sets. For example, a Project "order" a Part from a Supplier.</li>
+                            <div class="image-container2">
+                                <img src="images/Ternary_relationship.png" style="width: 50%;padding: 20px;"
+                                    alt="Viewing Table Data" class="tutorial-image">
+                                <p class="image-caption">Viewing Ternary Relationship</p>
+                            </div>
+                            <li><strong>n-ary Relationship</strong>: A relationship between entities of n different
+                                entity sets.</li>
+                        </ul>
+
+                        <p><strong>Attributes of Relationships</strong>: Relationships can also have attributes. For
+                            example, the "Enrolls_In" relationship between Student and Course might have attributes like
+                            enrollment_date and grade.</p>
+                    </div>
+
+                    <div id="cardinality-participation">
+                        <h3>Cardinality and Participation Constraints</h3>
+
+                        <p>Constraints specify rules that the data in the database must satisfy. Two important types of
+                            constraints in ER modeling are cardinality and participation constraints:</p>
+
+                        <p><strong>Cardinality Constraints</strong>: Cardinality specifies the number of entities to
+                            which another entity can be related via a relationship set. Common cardinality ratios
+                            include:</p>
+
+                        <ul>
+                            <li><strong>One-to-One (1:1)</strong>: Each entity in the first entity set is related to at
+                                most one entity in the second entity set, and vice versa. For example, A manager can manage only one department. Each department can have only one manager
+                                .</li>
+                           
+                                <div class="image-container2">
+                                    <img src="images/one-to-one.png" style="width: 50%;padding: 20px;"
+                                        alt="Viewing Table Data" class="tutorial-image">
+                                    <p class="image-caption">Viewing one-to-one
+                                    </p>
+                                </div>
+
+                                
+                                <li><strong>One-to-Many (1:N)</strong>: Each entity in the first entity set can be related
+                                to many entities in the second entity set, but each entity in the second entity set is
+                                related to at most one entity in the first entity set. For example, A department can have several employees. Each employee may work in only one department.</li>
+
+                                <div class="image-container2">
+                                    <img src="images/one-to-many.png" style="width: 50%;padding: 20px;"
+                                        alt="Viewing Table Data" class="tutorial-image">
+                                    <p class="image-caption">Viewing one-to-many
+                                    </p>
+                                </div>
+                          
+                            <li><strong>Many-to-Many (M:N)</strong>: Each entity in the first entity set can be related
+                                to many entities in the second entity set, and vice versa. For example, a supplier can supply parts to several projects. A project can receive parts from several suppliers.</li>
+                                <div class="image-container2">
+                                    <img src="images/many-to-many.png" style="width: 50%;padding: 20px;"
+                                        alt="Viewing Table Data" class="tutorial-image">
+                                    <p class="image-caption">Viewing Many-to-Many
+                                    </p>
+                                </div>
+                        </ul>
+
+                        <p><strong>Participation Constraints</strong>: Participation constraints specify whether all
+                            entities in an entity set must participate in a relationship set. There are two types:</p>
+
+                        <ul>
+                            <li><strong>Total Participation (Mandatory)</strong>: Every entity in the entity set must
+                                participate in at least one relationship in the relationship set. In ER diagrams, this
+                                is often represented by a double line connecting the entity set to the relationship. For
+                                example, every Employee must work in a Department.</li>
+                            <li><strong>Partial Participation (Optional)</strong>: Some entities in the entity set may
+                                not participate in any relationship in the relationship set. In ER diagrams, this is
+                                represented by a single line. For example, Not every employee manages a department. Employee participation in manages relationship is partial
+                                </li>
+                                <div class="image-container2">
+                                    <img src="images/Partial_participation.png" style="width: 50%;padding: 20px;"
+                                        alt="Viewing Table Data" class="tutorial-image">
+                                    <p class="image-caption">Viewing Partial Participation
+                                    </p>
+                                </div>
+                          
+                        </ul>
+
+                        <p>Together, cardinality and participation constraints provide a powerful way to express the
+                            rules and semantics of the data being modeled.</p>
+                    </div>
+
+                    <div id="weak-entities">
+                        <h3>Weak Entities</h3>
+
+                        <p>As mentioned earlier, a weak entity is an entity that cannot exist independently and relies
+                            on another entity (its owner) for its identification. Let's explore this concept in more
+                            detail:</p>
+
+                        <p><strong>Characteristics of Weak Entities</strong>:</p>
+
+                        <ul>
+                            <li>A weak entity does not have a complete primary key of its own.</li>
+                            <li>It depends on a strong entity (owner) for its existence.</li>
+                            <li>It has a partial key that can uniquely identify weak entity instances related to the
+                                same owner entity.</li>
+                            <li>The primary key of a weak entity is the combination of the primary key of its owner
+                                entity and its own partial key.</li>
+                            <li>A weak entity has total participation in its identifying relationship with the owner
+                                entity.</li>
+                        </ul>
+
+                        <p><strong>Identifying Relationship</strong>: The relationship between a weak entity and its
+                            owner entity is called an identifying relationship. In ER diagrams, weak entities are often
+                            represented as double-bordered rectangles, and identifying relationships as double-bordered
+                            diamonds.</p>
+
+                        <p><strong>Example</strong>: Consider a company database where each Employee can have multiple
+                            Dependents (e.g., spouse, children). The Dependent entity is a weak entity because:</p>
+
+                        <ul>
+                            <li>A Dependent cannot exist in the database without being associated with an Employee.</li>
+                            <li>The name of a Dependent alone is not enough to uniquely identify them (multiple
+                                employees might have dependents with the same name).</li>
+                            <li>The primary key of Dependent would be the combination of employee_id (from the Employee
+                                entity) and dependent_name (the partial key of Dependent).</li>
+                        </ul>
+
+                        <p>In this example, "Has_Dependent" would be the identifying relationship between Employee and
+                            Dependent.</p>
+                    </div>
+                </div>
+
+                <div id="er-diagram-notation">
+                    <h2>Part 3: ER Diagram Notation</h2>
+
+                    <p>Entity-Relationship diagrams (ERDs) provide a visual representation of the ER model. Several
+                        notations have been developed for drawing ERDs, each with its own symbols and conventions. Let's
+                        explore the most common notations:</p>
+
+                    <div id="chen-notation">
+                        <h3>Chen Notation</h3>
+
+                        <p>The original ER notation was proposed by Peter Chen in 1976 and is still widely used in
+                            academic settings:</p>
+
+                        <ul>
+                            <li><strong>Entities</strong>: Represented as rectangles labeled with the entity name.</li>
+                            <li><strong>Attributes</strong>: Represented as ovals connected to their entity or
+                                relationship by a line. Primary key attributes are underlined.</li>
+                            <li><strong>Relationships</strong>: Represented as diamonds labeled with the relationship
+                                name.</li>
+                            <li><strong>Cardinality</strong>: Indicated by placing "1" or "N" (or "M") near the lines
+                                connecting entities to relationships.</li>
+                            <li><strong>Weak Entities</strong>: Represented as double-bordered rectangles.</li>
+                            <li><strong>Identifying Relationships</strong>: Represented as double-bordered diamonds.
+                            </li>
+                            <li><strong>Total Participation</strong>: Represented by a double line connecting an entity
+                                to a relationship.</li>
+                            <li><strong>Partial Participation</strong>: Represented by a single line.</li>
+                        </ul>
+
+                        <div class="diagram-placeholder">
+                            <div class="image-container2">
+                                <img src="images/Chen_Notation.png" style="width: 50%;padding: 20px;"
+                                    alt="Viewing Table Data" class="tutorial-image">
+                                <p class="image-caption">A diagram showing Chen notation with entities (rectangles), attributes (ovals),
+                                    relationships (diamonds), and various constraints.
+                                </p>
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <div id="crow-foot-notation">
+                        <h3>Crow's Foot Notation</h3>
+
+                        <p>Crow's Foot notation is widely used in industry and is supported by many database design
+                            tools:</p>
+
+                        <ul>
+                            <li><strong>Entities</strong>: Represented as rectangles containing the entity name and
+                                often listing the attributes inside the rectangle.</li>
+                            <li><strong>Relationships</strong>: Represented as lines connecting entities, with the
+                                relationship name written on the line.</li>
+                            <li><strong>Cardinality</strong>: Indicated by symbols at the ends of relationship lines:
+                                <ul>
+                                    <li>One: A vertical line |</li>
+                                    <li>Many: A crow's foot (three lines resembling a bird's foot) ⋉</li>
+                                    <li>Zero or One: A circle and a vertical line ○|</li>
+                                    <li>Zero or Many: A circle and a crow's foot ○⋉</li>
+                                    <li>One or Many: A vertical line and a crow's foot |⋉</li>
+                                </ul>
+                            </li>
+                            <li><strong>Primary Keys</strong>: Indicated by placing "PK" next to the attribute or by
+                                underlining the attribute.</li>
+                            <li><strong>Foreign Keys</strong>: Indicated by placing "FK" next to the attribute.</li>
+                        </ul>
+
+                        <p>Crow's Foot notation does not explicitly represent weak entities or identifying
+                            relationships, but these concepts can still be modeled using the available notation.</p>
+
+                        <div class="diagram-placeholder">
+                            <div class="image-container2">
+                                <img src="images/Crow's_Foot_Notation.png" style="width: 50%;padding: 20px;"
+                                    alt="Viewing Table Data" class="tutorial-image">
+                                <p class="image-caption">A diagram showing Crow's Foot notation with entities (rectangles) connected by lines with
+                                    different symbols at the ends to indicate cardinality.</p>
+                            </div>
+                          
+                        </div>
+                    </div>
+
+                    <div id="uml-notation">
+                        <h3>UML Class Diagram Notation</h3>
+
+                        <p>Unified Modeling Language (UML) class diagrams can also be used to represent ER models:</p>
+
+                        <ul>
+                            <li><strong>Entities</strong>: Represented as classes (rectangles divided into three
+                                sections: class name, attributes, and methods). For ER modeling, the methods section is
+                                typically empty or omitted.</li>
+                            <li><strong>Attributes</strong>: Listed in the middle section of the class rectangle, often
+                                with their data types.</li>
+                            <li><strong>Relationships</strong>: Represented as lines connecting classes, with different
+                                line styles for different types of relationships:
+                                <ul>
+                                    <li>Association: Solid line</li>
+                                    <li>Aggregation: Solid line with an empty diamond at one end</li>
+                                    <li>Composition: Solid line with a filled diamond at one end</li>
+                                    <li>Generalization/Specialization: Solid line with an empty triangle pointing to the
+                                        superclass</li>
+                                </ul>
+                            </li>
+                            <li><strong>Cardinality</strong>: Indicated by multiplicity expressions (e.g., "1", "0..1",
+                                "1..*", "*") placed near the ends of relationship lines.</li>
+                            <li><strong>Primary Keys</strong>: Often indicated by stereotypes like «PK» or by
+                                underlining the attribute.</li>
+                        </ul>
+
+                        <p>UML class diagrams are more general-purpose than traditional ER notations and can represent
+                            additional object-oriented concepts that are not part of the basic ER model.</p>
+
+                        <div class="diagram-placeholder">
+                            <div class="image-container2">
+                                <img src="images/UML_Notation.png" style="width: 50%;padding: 20px;"
+                                    alt="Viewing Table Data" class="tutorial-image">
+                                <p class="image-caption">A diagram showing UML class notation with classes (rectangles divided into sections)
+                                    connected by different types of lines to indicate relationships.</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                    <div id="notation-comparison">
+                        <h3>Comparison of Notations</h3>
+
+                        <p>Each notation has its strengths and weaknesses:</p>
+
+                        <ul>
+                            <li><strong>Chen Notation</strong>:
+                                <ul>
+                                    <li>Strengths: Explicitly represents all ER concepts (entities, attributes,
+                                        relationships, constraints); visually distinguishes between different types of
+                                        elements.</li>
+                                    <li>Weaknesses: Can become cluttered with many attributes; less commonly used in
+                                        industry tools.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Crow's Foot Notation</strong>:
+                                <ul>
+                                    <li>Strengths: Compact representation; clearly shows cardinality constraints; widely
+                                        supported by database design tools.</li>
+                                    <li>Weaknesses: Does not explicitly represent some ER concepts (e.g., weak entities,
+                                        identifying relationships).</li>
+                                </ul>
+                            </li>
+                            <li><strong>UML Class Diagram Notation</strong>:
+                                <ul>
+                                    <li>Strengths: Part of a broader modeling language; can represent both data and
+                                        behavior; widely used in software engineering.</li>
+                                    <li>Weaknesses: Not specifically designed for database modeling; some ER concepts
+                                        require additional stereotypes or annotations.</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <p>The choice of notation often depends on the specific context, available tools, and personal
+                            or organizational preferences. In this course, we will primarily use Chen notation for its
+                            educational value in clearly representing all ER concepts, but we will also introduce Crow's
+                            Foot notation due to its widespread use in industry.</p>
+ 
+                        <div class="diagram-placeholder">
+                            <div class="image-container2">
+                                <img src="images/Comparison_of_Notations.png" style="width: 50%;padding: 20px;"
+                                    alt="Viewing Table Data" class="tutorial-image">
+                                <p class="image-caption">A side-by-side comparison showing how the same database schema would be represented in
+                                    Chen, Crow's Foot, and UML notations.</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div id="practical-er-modeling">
+                    <h2>Part 4: Practical ER Modeling</h2>
+
+                    <p>Now that we understand the concepts and notations of ER modeling, let's explore the practical
+                        aspects of creating ER diagrams for real-world scenarios:</p>
+
+                    <div id="identifying-entities">
+                        <h3>Identifying Entities, Attributes, and Relationships</h3>
+
+                        <p>Creating an ER model begins with identifying the key components of the system being modeled:
+                        </p>
+
+                        <p><strong>Identifying Entities</strong>:</p>
+                        <ul>
+                            <li>Look for nouns in the requirements that represent distinct objects or concepts.</li>
+                            <li>Consider what information needs to be stored and tracked over time.</li>
+                            <li>Determine if each potential entity has multiple instances and unique identifiers.</li>
+                            <li>Examples: Customer, Product, Order, Employee, Department.</li>
+                        </ul>
+
+                        <p><strong>Identifying Attributes</strong>:</p>
+                        <ul>
+                            <li>Look for properties or characteristics of the identified entities.</li>
+                            <li>Determine what information needs to be stored about each entity.</li>
+                            <li>Identify which attributes can serve as keys.</li>
+                            <li>Examples: For a Customer entity, attributes might include customer_id, name, address,
+                                phone, and email.</li>
+                        </ul>
+
+                        <p><strong>Identifying Relationships</strong>:</p>
+                        <ul>
+                            <li>Look for verbs or associations between entities in the requirements.</li>
+                            <li>Determine how entities interact or are related to each other.</li>
+                            <li>Identify the cardinality and participation constraints for each relationship.</li>
+                            <li>Examples: Customer "places" Order, Employee "works in" Department, Student "enrolls in"
+                                Course.</li>
+                        </ul>
+
+                        <p><strong>Example Process</strong>:</p>
+                        <p>Consider the following requirement: "A university needs a database to track students,
+                            courses, and enrollments. Each student has a unique ID, name, date of birth, and email. Each
+                            course has a unique code, title, credit hours, and is offered by a department. Students can
+                            enroll in multiple courses, and each enrollment has a semester and a grade."</p>
+
+                        <p>From this requirement, we can identify:</p>
+                        <ul>
+                            <li>Entities: Student, Course, Department</li>
+                            <li>Attributes:
+                                <ul>
+                                    <li>Student: student_id (key), name, date_of_birth, email</li>
+                                    <li>Course: course_code (key), title, credit_hours</li>
+                                    <li>Department: dept_id (key), name</li>
+                                </ul>
+                            </li>
+                            <li>Relationships:
+                                <ul>
+                                    <li>Student "enrolls in" Course (M:N relationship with attributes semester and
+                                        grade)</li>
+                                    <li>Department "offers" Course (1:N relationship)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="image-container2">
+                        <img src="images/Example_erd.png" style="width: 40%;padding: 20px;"
+                            alt="Viewing Table Data" class="tutorial-image">
+                        <p class="image-caption">Crow's Foot notation.</p>
+                    </div>
+                   
+
+                    <div id="common-patterns">
+                        <h3>Common Design Patterns</h3>
+
+                        <p>Certain patterns appear frequently in ER modeling. Recognizing these patterns can help
+                            streamline the design process:</p>
+
+                        <p><strong>Master-Detail Pattern</strong>:</p>
+                        <ul>
+                            <li>A one-to-many relationship between a "master" entity and multiple "detail" entities.
+                            </li>
+                            <li>Example: Order (master) and Order_Item (detail). An order can have multiple items, but
+                                each item belongs to exactly one order.</li>
+                            <li>Implementation: The detail entity typically includes a foreign key referencing the
+                                master entity.</li>
+                        </ul>
+
+                        <p><strong>Associative Entity Pattern</strong>:</p>
+                        <ul>
+                            <li>Used to represent a many-to-many relationship with additional attributes.</li>
+                            <li>Example: Student and Course have a many-to-many relationship, with Enrollment as an
+                                associative entity that includes attributes like semester and grade.</li>
+                            <li>Implementation: The associative entity typically has a composite primary key consisting
+                                of the primary keys of the two related entities.</li>
+                        </ul>
+
+                        <p><strong>Subtype/Supertype Pattern</strong>:</p>
+                        <ul>
+                            <li>Used to represent inheritance or specialization/generalization relationships.</li>
+                            <li>Example: Person (supertype) with subtypes Employee and Customer. Each employee and
+                                customer is also a person and inherits person attributes.</li>
+                            <li>Implementation: Can be implemented in various ways, including single table inheritance,
+                                table per class, or table per concrete class.</li>
+                        </ul>
+
+                        <p><strong>Recursive Relationship Pattern</strong>:</p>
+                        <ul>
+                            <li>A relationship between entities of the same type.</li>
+                            <li>Example: Employee "manages" Employee. One employee can manage multiple employees, but
+                                each employee has at most one manager.</li>
+                            <li>Implementation: Typically implemented using a self-referencing foreign key.</li>
+                        </ul>
+
+                        <p><strong>Weak Entity Pattern</strong>:</p>
+                        <ul>
+                            <li>Used when an entity's existence depends on another entity.</li>
+                            <li>Example: Employee and Dependent. A dependent cannot exist without an associated
+                                employee.</li>
+                            <li>Implementation: The weak entity's primary key includes the primary key of the owner
+                                entity.</li>
+                        </ul>
+
+                      
+                    </div>
+
+                    <div id="common-mistakes">
+                        <h3>Common Mistakes in ER Modeling</h3>
+
+                        <p>Even experienced designers can make mistakes when creating ER models. Being aware of common
+                            pitfalls can help avoid them:</p>
+
+                        <p><strong>Confusing Entities and Attributes</strong>:</p>
+                        <ul>
+                            <li>Mistake: Modeling something as an attribute when it should be an entity, or vice versa.
+                            </li>
+                            <li>Example: Modeling "address" as a simple attribute of Customer when it should be a
+                                separate entity with its own attributes (street, city, state, zip).</li>
+                            <li>Solution: Consider whether the item has its own properties or if multiple instances of
+                                it need to be tracked. If so, it's likely an entity rather than an attribute.</li>
+                        </ul>
+
+                        <p><strong>Incorrect Cardinality</strong>:</p>
+                        <ul>
+                            <li>Mistake: Misidentifying the cardinality of a relationship.</li>
+                            <li>Example: Modeling the relationship between Student and Course as one-to-many when it
+                                should be many-to-many.</li>
+                            <li>Solution: Carefully analyze the real-world relationship and consider multiple scenarios
+                                to determine the correct cardinality.</li>
+                        </ul>
+
+                        <p><strong>Missing or Redundant Relationships</strong>:</p>
+                        <ul>
+                            <li>Mistake: Omitting necessary relationships or including redundant ones.</li>
+                            <li>Example: Creating direct relationships A→B, B→C, and A→C when the A→C relationship is
+                                redundant and can be derived from the other two.</li>
+                            <li>Solution: Ensure that all required relationships are included, but avoid creating
+                                relationships that can be derived from others.</li>
+                        </ul>
+
+                        <p><strong>Inappropriate Use of Weak Entities</strong>:</p>
+                        <ul>
+                            <li>Mistake: Modeling an entity as weak when it should be strong, or vice versa.</li>
+                            <li>Example: Modeling Department as a weak entity of Company when it should be a strong
+                                entity with its own primary key.</li>
+                            <li>Solution: Only use weak entities when an entity's existence truly depends on another
+                                entity and it cannot be uniquely identified without its owner.</li>
+                        </ul>
+
+                        <p><strong>Overcomplicating the Model</strong>:</p>
+                        <ul>
+                            <li>Mistake: Creating an unnecessarily complex model with too many entities and
+                                relationships.</li>
+                            <li>Example: Creating separate entities for every minor concept in the system.</li>
+                            <li>Solution: Strive for simplicity while ensuring the model accurately represents the
+                                requirements. Focus on the essential entities and relationships.</li>
+                        </ul>
+
+                        <p><strong>Ignoring Business Rules</strong>:</p>
+                        <ul>
+                            <li>Mistake: Failing to incorporate important business rules and constraints into the model.
+                            </li>
+                            <li>Example: Not capturing the rule that an employee can work in only one department at a
+                                time.</li>
+                            <li>Solution: Carefully analyze the requirements to identify all relevant business rules and
+                                ensure they are reflected in the model through appropriate cardinality and participation
+                                constraints.</li>
+                        </ul>
+                    </div>
+
+                    <div id="case-study">
+                        <h3>Case Study: University Database</h3>
+
+                        <p>Let's apply what we've learned to design an ER model for a university database:</p>
+
+                        <p><strong>Requirements</strong>:</p>
+                        <ul>
+                            <li>The university has multiple departments, each with a unique ID, name, location, and a
+                                chairperson who is a professor.</li>
+                            <li>Each department offers multiple courses. A course has a unique code, title, description,
+                                credit hours, and level.</li>
+                            <li>Professors work in departments. Each professor has an ID, name, rank, office location,
+                                and phone number. A professor can work in only one department.</li>
+                            <li>Students are enrolled in the university. Each student has an ID, name, date of birth,
+                                address, and major department.</li>
+                            <li>Students can enroll in multiple courses, and each course can have multiple students. For
+                                each enrollment, the semester and grade are recorded.</li>
+                            <li>Each course can have multiple sections in a semester. Each section has a unique section
+                                number, a classroom, meeting days and times, and a professor who teaches it.</li>
+                            <li>Students enroll in specific sections of courses, not just the courses themselves.</li>
+                        </ul>
+
+                        <p><strong>ER Model Design</strong>:</p>
+
+                        <p>1. <strong>Identify Entities</strong>:</p>
+                        <ul>
+                            <li>Department</li>
+                            <li>Course</li>
+                            <li>Professor</li>
+                            <li>Student</li>
+                            <li>Section</li>
+                            <li>Enrollment (associative entity between Student and Section)</li>
+                        </ul>
+
+                        <p>2. <strong>Identify Attributes</strong>:</p>
+                        <ul>
+                            <li>Department: dept_id (key), name, location</li>
+                            <li>Course: course_code (key), title, description, credit_hours, level</li>
+                            <li>Professor: prof_id (key), name, rank, office_location, phone</li>
+                            <li>Student: student_id (key), name, date_of_birth, address</li>
+                            <li>Section: section_id (key), section_number, classroom, meeting_days, meeting_times,
+                                semester</li>
+                            <li>Enrollment: grade</li>
+                        </ul>
+
+                        <p>3. <strong>Identify Relationships</strong>:</p>
+                        <ul>
+                            <li>Department "offers" Course (1:N)</li>
+                            <li>Department "employs" Professor (1:N)</li>
+                            <li>Department "has as chairperson" Professor (1:1)</li>
+                            <li>Student "has major" Department (N:1)</li>
+                            <li>Course "has" Section (1:N)</li>
+                            <li>Professor "teaches" Section (1:N)</li>
+                            <li>Student "enrolls in" Section (M:N) with attribute grade</li>
+                        </ul>
+
+                        <div class="diagram-placeholder">
+                       
+                    <div class="image-container2">
+                        <img src="images/Example3_erd.png" style="padding: 20px;"
+                            alt="Viewing Table Data" class="tutorial-image">
+                        <p class="image-caption">A comprehensive ER diagram showing the university database with entities, attributes,
+                            relationships, and constraints as described above.</p>
+                    </div>
+                   
+                           
+                        </div>
+
+                        <p><strong>Discussion</strong>:</p>
+                        <p>This ER model captures the key entities and relationships in the university database. Some
+                            notable aspects of the design include:</p>
+
+                        <ul>
+                            <li>The chairperson relationship between Department and Professor is a 1:1 relationship, but
+                                it's also a subset of the "employs" relationship (a chairperson must be a professor in
+                                the department).</li>
+                            <li>The Section entity represents specific offerings of a course in a particular semester,
+                                allowing the same course to be offered multiple times with different professors,
+                                schedules, and classrooms.</li>
+                            <li>The Enrollment associative entity captures the many-to-many relationship between Student
+                                and Section, with grade as an attribute of the relationship.</li>
+                            <li>The model includes both structural relationships (e.g., Department "offers" Course) and
+                                participatory relationships (e.g., Professor "teaches" Section).</li>
+                        </ul>
+
+                        <p>This case study demonstrates how ER modeling can be used to design a database that accurately
+                            represents a complex real-world system with multiple interrelated entities and
+                            relationships.</p>
+                    </div>
+                </div>
+
+                <div id="what-we-learned">
+                    <h2>What Have We Learned in This Lesson?</h2>
+
+                    <p>In this lesson, we have explored Entity-Relationship (ER) modeling, a fundamental technique for
+                        conceptual database design. We have covered:</p>
+
+                    <ul>
+                        <li><strong>Database Design Process</strong>: We learned that database design typically follows
+                            a structured approach consisting of requirements collection, conceptual design (using ER
+                            modeling), logical design, and physical design.</li>
+
+                        <li><strong>ER Model Concepts</strong>: We explored the key components of the ER model,
+                            including entities, attributes, keys, relationships, cardinality and participation
+                            constraints, and weak entities.</li>
+
+                        <li><strong>ER Diagram Notation</strong>: We examined different notations for representing ER
+                            models graphically, including Chen notation, Crow's Foot notation, and UML class diagram
+                            notation.</li>
+
+                        <li><strong>Practical ER Modeling</strong>: We learned practical techniques for creating ER
+                            models, including how to identify entities, attributes, and relationships from requirements,
+                            common design patterns, common mistakes to avoid, and a case study demonstrating the
+                            application of ER modeling to a university database.</li>
+                    </ul>
+
+                    <p>ER modeling is a crucial skill for database designers and developers. It provides a way to
+                        visualize and communicate the structure of a database before implementation, helping to ensure
+                        that the database accurately represents the real-world system it's modeling. The ER model serves
+                        as a blueprint for the subsequent logical and physical design phases, guiding the creation of
+                        tables, columns, keys, and constraints in the actual database.</p>
+
+                    <p>In the next lesson, we will explore how to translate ER models into relational database schemas,
+                        a process known as ER-to-Relational mapping. This will bridge the gap between conceptual design
+                        and logical design, bringing us one step closer to implementing our database.</p>
+                </div>
+
+                <div id="appendix">
+                    <h2>Appendix</h2>
+
+                    <h3>Glossary of Terms</h3>
+
+                    <ul>
+                        <li><strong>Attribute</strong>: A property or characteristic of an entity.</li>
+                        <li><strong>Cardinality</strong>: The number of entities to which another entity can be related
+                            via a relationship set.</li>
+                        <li><strong>Composite Attribute</strong>: An attribute that can be divided into smaller
+                            subparts.</li>
+                        <li><strong>Conceptual Design</strong>: The phase of database design that focuses on creating a
+                            high-level model of the data and relationships, independent of implementation details.</li>
+                        <li><strong>Derived Attribute</strong>: An attribute whose value can be calculated from other
+                            attributes.</li>
+                        <li><strong>Entity</strong>: A real-world object, concept, or event about which we want to store
+                            data.</li>
+                        <li><strong>Entity Set</strong>: A collection of entities of the same type.</li>
+                        <li><strong>Entity-Relationship Diagram (ERD)</strong>: A graphical representation of an ER
+                            model.</li>
+                        <li><strong>Entity-Relationship Model</strong>: A conceptual data model that views the real
+                            world as entities and relationships.</li>
+                        <li><strong>Identifying Relationship</strong>: The relationship between a weak entity and its
+                            owner entity.</li>
+                        <li><strong>Key</strong>: An attribute or combination of attributes that uniquely identifies an
+                            entity within an entity set.</li>
+                        <li><strong>Logical Design</strong>: The phase of database design that focuses on mapping the
+                            conceptual model to a specific data model (e.g., relational, document, graph).</li>
+                        <li><strong>Multi-valued Attribute</strong>: An attribute that can hold multiple values for each
+                            entity instance.</li>
+                        <li><strong>Participation Constraint</strong>: A constraint that specifies whether all entities
+                            in an entity set must participate in a relationship set.</li>
+                        <li><strong>Physical Design</strong>: The phase of database design that focuses on optimizing
+                            the logical design for a specific DBMS and hardware environment.</li>
+                        <li><strong>Primary Key</strong>: The candidate key chosen to be the main identifier for an
+                            entity set.</li>
+                        <li><strong>Relationship</strong>: An association between two or more entities.</li>
+                        <li><strong>Relationship Set</strong>: A collection of relationships of the same type.</li>
+                        <li><strong>Simple Attribute</strong>: An attribute that cannot be divided further.</li>
+                        <li><strong>Strong Entity</strong>: An entity that can exist independently of other entities.
+                        </li>
+                        <li><strong>Weak Entity</strong>: An entity that cannot exist independently and relies on
+                            another entity for its identification.</li>
+                    </ul>
+
+                    <h3 id="practice-exercises">Practice Exercises</h3>
+
+                    <p><strong>Exercise 1</strong>: Identify the entities, attributes, and relationships in the
+                        following scenario:</p>
+                    <p>"A library maintains a collection of books. Each book has a unique ISBN, title, publication year,
+                        and publisher. Books are written by one or more authors, and each author can write multiple
+                        books. Authors have a unique ID, name, and nationality. The library has multiple branches, each
+                        with a unique ID, name, address, and phone number. Each book copy has a unique copy number and
+                        is held at a specific branch. Library members can borrow book copies. Each member has a unique
+                        ID, name, address, and phone number. When a member borrows a book copy, the borrow date and due
+                        date are recorded."</p>
+
+                    <p><strong>Exercise 2</strong>: Draw an ER diagram (using Chen notation) for a simple banking system
+                        with the following requirements:</p>
+                    <ul>
+                        <li>The bank has multiple branches, each with a unique branch code, name, and address.</li>
+                        <li>Customers have a unique customer ID, name, address, and phone number.</li>
+                        <li>Accounts have a unique account number, type (checking, savings, etc.), balance, and date
+                            opened.</li>
+                        <li>Each account is owned by one or more customers, and each customer can own multiple accounts.
+                        </li>
+                        <li>Each account is maintained at exactly one branch, but a branch can maintain multiple
+                            accounts.</li>
+                        <li>Transactions are performed on accounts. Each transaction has a unique transaction ID, date,
+                            amount, and type (deposit, withdrawal, transfer).</li>
+                    </ul>
+
+                    <p><strong>Exercise 3</strong>: Convert the following ER diagram (described textually) to Crow's
+                        Foot notation:</p>
+                    <p>"The ER diagram shows three entities: Department, Employee, and Project. Department has
+                        attributes dept_id (primary key), name, and location. Employee has attributes emp_id (primary
+                        key), name, salary, and hire_date. Project has attributes project_id (primary key), name,
+                        start_date, and end_date. There is a one-to-many relationship 'Works_In' between Department and
+                        Employee (an employee works in exactly one department, and a department can have many
+                        employees). There is a many-to-many relationship 'Assigned_To' between Employee and Project (an
+                        employee can be assigned to multiple projects, and a project can have multiple employees
+                        assigned to it). The 'Assigned_To' relationship has an attribute hours_worked."</p>
+
+                    <p><strong>Exercise 4</strong>: Identify and correct the mistakes in the following ER model
+                        description:</p>
+                    <p>"A university database has entities Student, Course, and Grade. Student has attributes
+                        student_id, name, and major. Course has attributes course_code, title, and credits. Grade has
+                        attributes letter_grade and numeric_grade. There is a one-to-one relationship 'Enrolls_In'
+                        between Student and Course. There is a one-to-many relationship between Student and Grade, and a
+                        one-to-many relationship between Course and Grade."</p>
+
+                    <p><strong>Exercise 5</strong>: Design an ER model for an online shopping system with the following
+                        requirements:</p>
+                    <ul>
+                        <li>Customers can register on the website by providing their name, email, password, shipping
+                            address, and payment information.</li>
+                        <li>The system sells products from various categories. Each product has a unique ID, name,
+                            description, price, and inventory quantity.</li>
+                        <li>Customers can place orders for multiple products. Each order has a unique order number,
+                            order date, shipping address, payment method, and status.</li>
+                        <li>For each product in an order, the quantity and price at the time of purchase are recorded.
+                        </li>
+                        <li>Customers can write reviews for products they have purchased. Each review includes a rating
+                            (1-5 stars), a comment, and a date.</li>
+                        <li>The system also tracks shipments. Each shipment has a tracking number, carrier, shipping
+                            date, and estimated delivery date.</li>
+                    </ul>
+                    <p><strong>Exercise 6</strong>: Descripe the following ER diagram in words:</p>
+                    <div class="image-container2">
+                        <img src="images/Example4_erd.png" style="width: 40%;padding: 20px;"
+                            alt="Viewing Table Data" class="tutorial-image">
+                        <p class="image-caption">Chen notation.</p>
+                    </div>
+                </div>
+
+                <div id="additional-resources">
+                    <h2>Additional Resources</h2>
+
+                    <h3>Books</h3>
+                    <ul>
+                        <li>Elmasri, R., & Navathe, S. B. (2016). <em>Fundamentals of Database Systems</em> (7th ed.).
+                            Pearson. Chapter 3: Data Modeling Using the Entity-Relationship Model.</li>
+                        <li>Teorey, T. J., Lightstone, S. S., Nadeau, T., & Jagadish, H. V. (2011). <em>Database
+                                Modeling and Design: Logical Design</em> (5th ed.). Morgan Kaufmann.</li>
+                        <li>Coronel, C., & Morris, S. (2018). <em>Database Systems: Design, Implementation, &
+                                Management</em> (13th ed.). Cengage Learning.</li>
+                    </ul>
+
+                    <h3>Online Resources</h3>
+                    <ul>
+                        <li><a href="https://www.lucidchart.com/pages/er-diagrams" target="_blank">Lucidchart: ER
+                                Diagram Tutorial</a></li>
+                        <li><a href="https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/"
+                                target="_blank">Visual Paradigm: What is Entity Relationship Diagram (ERD)?</a></li>
+                        <li><a href="https://www.smartdraw.com/entity-relationship-diagram/" target="_blank">SmartDraw:
+                                Entity Relationship Diagram (ERD)</a></li>
+                        <li><a href="https://creately.com/blog/diagrams/er-diagram-tutorial/" target="_blank">Creately:
+                                ER Diagram Tutorial</a></li>
+                    </ul>
+
+                    <h3>Tools for Creating ER Diagrams</h3>
+                    <ul>
+                        <li><a href="https://www.lucidchart.com/" target="_blank">Lucidchart</a>: Web-based diagramming
+                            tool with support for ER diagrams.</li>
+                        <li><a href="https://www.visual-paradigm.com/" target="_blank">Visual Paradigm</a>: Professional
+                            modeling tool with comprehensive support for ER diagrams.</li>
+                        <li><a href="https://www.mysql.com/products/workbench/" target="_blank">MySQL Workbench</a>:
+                            Free database design tool that supports ER diagrams and can generate SQL from them.</li>
+                        <li><a href="https://www.diagrams.net/" target="_blank">draw.io (diagrams.net)</a>: Free online
+                            diagramming tool with support for ER diagrams.</li>
+                        <li><a href="https://www.dbdesigner.net/" target="_blank">DBDesigner</a>: Online database schema
+                            design and modeling tool.</li>
+                    </ul>
+
+                    <h3>Video Tutorials</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=QpdhBUYk7Kk" target="_blank">Entity Relationship
+                                Diagram (ERD) Tutorial - Part 1</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=-CuY5ADwn24" target="_blank">Entity Relationship
+                                Diagram (ERD) Tutorial - Part 2</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=GKQlNfgz9N4" target="_blank">Database Design
+                                Tutorial</a></li>
+                    </ul>
+                </div>
+            </div>
+    </main>
+
+    <footer>
+        <p>&copy; Haytham Qushtom - Wilfrid Laurier University</p>
+    </footer>
+</body>
+
+</html>

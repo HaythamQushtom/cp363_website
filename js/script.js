@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const emptyImageContainers = Array.from(document.querySelectorAll('.image-container')).filter(container => {
         const img = container.querySelector('img');
         return img && (!img.src || img.src.includes('images/mysql_') || img.src.endsWith('png'));
-    });
+    }); 
     
     // Replace with placeholder divs
     emptyImageContainers.forEach(container => {
@@ -135,7 +135,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Replace image with placeholder
             img.replaceWith(placeholder);
-        }
+        } 
+        
     });
     
     // Helper function to determine placeholder class based on caption
